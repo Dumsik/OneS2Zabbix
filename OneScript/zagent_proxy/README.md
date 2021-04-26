@@ -34,7 +34,7 @@ https://oscript.io/downloads
 >opm install -f [имя .ospx файла].ospx (ospx файл создается командой build)
 
 6. Добавить в конфигурационный файл zabbix агента строки
-
+```
 # проксирование запросов от zabbix_agent к стороннему http сервису
 # 	type - строка, имя команды RPC
 # 	body - строка JSON, прокси сформирует http запрос и передаст в него body как тело запроса
@@ -52,5 +52,5 @@ UserParameter=zabbix.http.proxy[*],zagent_proxy rpc -type $1 -body $2 -host $3 -
 #	password - строка, пароль пользователя для аутентификации на стороне http сервиса
 #	timeout - строка, таймаут запроса к http сервису. Не обязательный, по умолчанию 30 сек
 UserParameter=zabbix.http.ping[*],zagent_proxy ping -host $1 -db $2 -user $3 -password $4 -timeout 10
-
+```
 7. Перезапустить службу zabbix_agent
