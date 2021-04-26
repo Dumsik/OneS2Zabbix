@@ -34,6 +34,7 @@ https://oscript.io/downloads
 >opm install -f [имя .ospx файла].ospx (ospx файл создается командой build)
 
 6. Добавить в конфигурационный файл zabbix агента строки
+```
 Timeout=30
 UserParameter=1c.infobases.discovery[\*],rac2zabbix discovery -host localhost -port $1 -user $2 -password $3
 UserParameter=1c.infobases.info[\*],rac2zabbix infobase -host localhost -port $1 -cluster $2 -infobase $3 -user $4 -password $5
@@ -42,7 +43,7 @@ UserParameter=1c.servers.processes[\*],rac2zabbix process-list -host localhost -
 UserParameter=1c.clusters.discovery[\*],rac2zabbix discovery-clusters -host localhost -port $1
 UserParameter=1c.clusters.processes[\*],rac2zabbix processes -host localhost -port $1 -cluster $2 -user $3 -password $4
 UserParameter=1c.clusters.sessions[\*],rac2zabbix sessions -host localhost -port $1 -cluster $2 -user $3 -password $4
-
+```
 7. Перезапустить службу zabbix_agent
 
 8. Добавить в zabbix шаблон элементов из каталога ./templates
