@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.11">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<InputField name="Объект_ZabbixАдресСервера" id="1">
+			<DataPath>Объект.ZabbixАдресСервера</DataPath>
+			<AutoMarkIncomplete>false</AutoMarkIncomplete>
+			<ContextMenu name="Объект_ZabbixАдресСервераКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="Объект_ZabbixАдресСервераРасширеннаяПодсказка" id="3"/>
+		</InputField>
+		<InputField name="Объект_ZabbixИмяСервераДляЭлементовДанных" id="4">
+			<DataPath>Объект.ZabbixИмяСервераДляЭлементовДанных</DataPath>
+			<AutoMarkIncomplete>false</AutoMarkIncomplete>
+			<ContextMenu name="Объект_ZabbixИмяСервераДляЭлементовДанныхКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="Объект_ZabbixИмяСервераДляЭлементовДанныхРасширеннаяПодсказка" id="6"/>
+		</InputField>
+		<CheckBoxField name="РежимЭмуляции" id="32">
+			<DataPath>РежимЭмуляции</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="РежимЭмуляцииКонтекстноеМеню" id="33"/>
+			<ExtendedTooltip name="РежимЭмуляцииРасширеннаяПодсказка" id="34"/>
+		</CheckBoxField>
+		<Table name="ИменаПассивныхЭлементовДанныхZabbix" id="7">
+			<Representation>List</Representation>
+			<TitleLocation>Top</TitleLocation>
+			<ReadOnly>true</ReadOnly>
+			<ChangeRowSet>false</ChangeRowSet>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ИменаПассивныхЭлементовДанныхZabbix</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ИменаПассивныхЭлементовДанныхZabbixКонтекстноеМеню" id="8"/>
+			<AutoCommandBar name="ИменаПассивныхЭлементовДанныхZabbixКоманднаяПанель" id="9">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ИменаПассивныхЭлементовДанныхZabbixТестУспех" id="30">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ТестУспех</CommandName>
+						<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixТестУспехРасширеннаяПодсказка" id="31"/>
+					</Button>
+					<Button name="ИменаПассивныхЭлементовДанныхZabbixТестСбой" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ТестСбой</CommandName>
+						<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixТестСбойРасширеннаяПодсказка" id="29"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixРасширеннаяПодсказка" id="10"/>
+			<SearchStringAddition name="ИменаПассивныхЭлементовДанныхZabbixСтрокаПоиска" id="11">
+				<AdditionSource>
+					<Item>ИменаПассивныхЭлементовДанныхZabbix</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ИменаПассивныхЭлементовДанныхZabbixСтрокаПоискаКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ИменаПассивныхЭлементовДанныхZabbixСостояниеПросмотра" id="14">
+				<AdditionSource>
+					<Item>ИменаПассивныхЭлементовДанныхZabbix</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ИменаПассивныхЭлементовДанныхZabbixСостояниеПросмотраКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixСостояниеПросмотраРасширеннаяПодсказка" id="16"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ИменаПассивныхЭлементовДанныхZabbixУправлениеПоиском" id="17">
+				<AdditionSource>
+					<Item>ИменаПассивныхЭлементовДанныхZabbix</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ИменаПассивныхЭлементовДанныхZabbixУправлениеПоискомКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixУправлениеПоискомРасширеннаяПодсказка" id="19"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ИменаПассивныхЭлементовДанныхZabbixKey" id="20">
+					<DataPath>ИменаПассивныхЭлементовДанныхZabbix.Key</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>26</Width>
+					<AutoMaxWidth>false</AutoMaxWidth>
+					<ContextMenu name="ИменаПассивныхЭлементовДанныхZabbixKeyКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixKeyРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="ИменаПассивныхЭлементовДанныхZabbixName" id="23">
+					<DataPath>ИменаПассивныхЭлементовДанныхZabbix.Name</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ИменаПассивныхЭлементовДанныхZabbixNameКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ИменаПассивныхЭлементовДанныхZabbixNameРасширеннаяПодсказка" id="25"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Объект</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:ConstantsSet</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Объект.ZabbixАдресСервера</Field>
+				<Field>Объект.ZabbixИмяСервераДляЭлементовДанных</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ИменаПассивныхЭлементовДанныхZabbix" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступные имена пассивных элементов данных Zabbix</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Key" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Key</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>250</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Name" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Name</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>500</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="РежимЭмуляции" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Режим эмуляции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ТестУспех" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тествая отправка в Zabbix состояния "Успех"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тест успех</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ТестУспех</Action>
+		</Command>
+		<Command name="ТестСбой" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тествая отправка в Zabbix состояния "Сбой"</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тест сбой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ТестСбой</Action>
+		</Command>
+	</Commands>
+</Form>

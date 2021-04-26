@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ConfigDumpInfo xmlns="http://v8.1c.ru/8.3/xcf/dumpinfo" xmlns:xen="http://v8.1c.ru/8.3/xcf/enums" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" format="Hierarchical" version="2.11">
+	<ConfigVersions>
+		<Metadata name="CommonForm.НастройкиZabbixМониторинга" id="fde38ef3-4458-40ce-98a9-adebb3f6f590" configVersion="39056d146fbb9e42b1e3a0261f1a709900000000"/>
+		<Metadata name="CommonForm.НастройкиZabbixМониторинга.Form" id="fde38ef3-4458-40ce-98a9-adebb3f6f590.0" configVersion="8ba7b265e234d646ab2bb5b6421d0c0a00000000"/>
+		<Metadata name="CommonModule.Zabbix_ОбменДаннымиСервер" id="db71b341-cbac-484d-be15-29c000b8399b" configVersion="4ab84123a27f2f4f97d51a58e29ed0c900000000"/>
+		<Metadata name="CommonModule.Zabbix_ОбменДаннымиСервер.Module" id="db71b341-cbac-484d-be15-29c000b8399b.0" configVersion="4dbe3fa38bb1d64d9ab9fa175c3a817a00000000"/>
+		<Metadata name="CommonModule.ZabbixМониторинг" id="152b4173-9957-4da6-83de-43daa1ad6550" configVersion="04dcdf3209da9542bacee914fe152b5d00000000"/>
+		<Metadata name="CommonModule.ZabbixМониторинг.Module" id="152b4173-9957-4da6-83de-43daa1ad6550.0" configVersion="d21a7fa8156b2a48838dc3b6b63132a600000000"/>
+		<Metadata name="CommonModule.ОбменДаннымиПовтИсп" id="4e9e1af0-2ad7-461a-8c9f-2931e7a2d3ec" configVersion="f4981e2452bcff4bb581a8bee6289e2000000000"/>
+		<Metadata name="CommonModule.ОбменДаннымиПовтИсп.Module" id="4e9e1af0-2ad7-461a-8c9f-2931e7a2d3ec.0" configVersion="b056506ef2b3c34dbe335a1ac76ad64b00000000"/>
+		<Metadata name="CommonModule.ОбменДаннымиСервер" id="77aef38e-9745-41ab-aa5e-f7e995014b80" configVersion="39910d4601215348b97a766442d6eaeb00000000"/>
+		<Metadata name="CommonModule.ОбменДаннымиСервер.Module" id="77aef38e-9745-41ab-aa5e-f7e995014b80.0" configVersion="e1ddf0bc65bd44429b3a701da2e02ab000000000"/>
+		<Metadata name="Configuration.OneS2Zabbix" id="5f62b672-963f-4039-acb0-6c4d228c6b9f" configVersion="455f6e6e1f4ebc49801328fd53f9182400000000"/>
+		<Metadata name="Constant.ZabbixАдресСервера" id="88d6759b-e90f-45fa-b789-9c527ae1dd2d" configVersion="c18fd96cde8bdd4abd7d9b2b5552bc2a00000000"/>
+		<Metadata name="Constant.ZabbixИмяСервераДляЭлементовДанных" id="e8bbb570-aecb-4dac-afa4-be6c5369a276" configVersion="202d788b0894394fa7b8907ecaec02c100000000"/>
+		<Metadata name="DataProcessor.ZabbixМониторинг" id="87ef307e-2cb1-4de1-ae0f-1b0c4a730177" configVersion="e8368196647ca6429cab5473eeca0f0200000000"/>
+		<Metadata name="DataProcessor.ZabbixМониторинг.ObjectModule" id="87ef307e-2cb1-4de1-ae0f-1b0c4a730177.0" configVersion="fe56c55c2af6714c9624f7c5b81b9d6800000000"/>
+		<Metadata name="Enum.ZabbixPassiveItems" id="321a193b-9d78-47cb-8957-d194b4ce7dc2" configVersion="d16e61d2d29f7d48bd06f3f53f76667200000000">
+			<Metadata name="Enum.ZabbixPassiveItems.EnumValue.TestItem" id="98c479ee-826c-4ed3-a022-bd326c83ae69"/>
+		</Metadata>
+		<Metadata name="HTTPService.СлужебныеСервисыZabbix" id="374bfc4d-c334-4bb1-a0b4-64da9ce6a9d8" configVersion="ad8aab8b32d6a340ab6ae96ff650b7dc00000000">
+			<Metadata name="HTTPService.СлужебныеСервисыZabbix.URLTemplate.СлужебныеСервисы" id="6e7a8f1d-9d44-4f0a-b98e-eaac49c40c25"/>
+			<Metadata name="HTTPService.СлужебныеСервисыZabbix.URLTemplate.Пинг.Method.GET" id="af27a627-8921-4add-aa8e-ada683f28b3b"/>
+			<Metadata name="HTTPService.СлужебныеСервисыZabbix.URLTemplate.Пинг" id="f2441215-630b-4c57-9fde-086da998863c"/>
+			<Metadata name="HTTPService.СлужебныеСервисыZabbix.URLTemplate.СлужебныеСервисы.Method.POST" id="fdca0d2b-2b2c-48fd-a468-f3cca51609a6"/>
+		</Metadata>
+		<Metadata name="HTTPService.СлужебныеСервисыZabbix.Module" id="374bfc4d-c334-4bb1-a0b4-64da9ce6a9d8.0" configVersion="4456a5f65ec08943828fc2c711b08cf900000000"/>
+		<Metadata name="Language.Русский" id="123f09e2-a028-4c33-9c73-a0beccdc58f5" configVersion="f535c584fa8e214692d1d1637a0a7bce00000000"/>
+		<Metadata name="ScheduledJob.ZabbixTrapОбнаружение" id="aa6d51e1-956f-4a90-b41d-ea5f04f10c6a" configVersion="fb7e6faf1090ac4f9e2b36d4a428d69700000000"/>
+		<Metadata name="Subsystem.ZabbixМониторинг" id="16a6fcfa-cd7b-4514-a297-4b59ab718a4f" configVersion="3697325ba55a754dab1b76f98d31197200000000"/>
+		<Metadata name="Subsystem.ZabbixМониторинг.CommandInterface" id="16a6fcfa-cd7b-4514-a297-4b59ab718a4f.1" configVersion="138feac30a534d48826d77121b13526400000000"/>
+	</ConfigVersions>
+</ConfigDumpInfo>
