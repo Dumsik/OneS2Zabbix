@@ -1,0 +1,490 @@
+session                          : 005b48ba-491a-42dc-b6cb-12fcfdf4f102
+session-id                       : 4831204
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : ЛущаТВ
+host                             : LS46-ws06
+app-id                           : 1CV8C
+locale                           : ru_RU
+started-at                       : 2020-04-24T08:45:56
+last-active-at                   : 2020-04-24T23:12:29
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 10302492
+bytes-last-5min                  : 55528
+calls-all                        : 4094
+calls-last-5min                  : 28
+dbms-bytes-all                   : 27528138
+dbms-bytes-last-5min             : 69476
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 290231
+duration-all-dbms                : 164552
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 2221
+duration-last-5min-dbms          : 1315
+memory-current                   : 0
+memory-last-5min                 : 5764311
+memory-total                     : 560091018
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 31575320
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 28038155
+duration-current-service         : 0
+duration-last-5min-service       : 94
+duration-all-service             : 11261
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 546
+cpu-time-total                   : 90593
+data-separation                  : ''
+
+session                          : 010e67df-bf92-41f0-bc0e-574ecad5b385
+session-id                       : 4785831
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : ДавыденковаАЮ
+host                             : vl103-ws05
+app-id                           : 1CV8C
+locale                           : ru
+started-at                       : 2020-04-23T23:45:25
+last-active-at                   : 2020-04-24T23:12:25
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 5938180
+bytes-last-5min                  : 21504
+calls-all                        : 3659
+calls-last-5min                  : 12
+dbms-bytes-all                   : 10080851
+dbms-bytes-last-5min             : 29601
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 138102
+duration-all-dbms                : 86255
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 500
+duration-last-5min-dbms          : 313
+memory-current                   : 0
+memory-last-5min                 : 707581
+memory-total                     : 162622609
+read-current                     : 0
+read-last-5min                   : 0
+read-total                       : 1542429
+write-current                    : 0
+write-last-5min                  : 0
+write-total                      : 3812890
+duration-current-service         : 0
+duration-last-5min-service       : 16
+duration-all-service             : 8026
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 140
+cpu-time-total                   : 34781
+data-separation                  : ''
+
+session                          : 01bf8ea0-6982-4d90-b2fa-622228bacee0
+session-id                       : 4829091
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : ПлатоноваЕВ
+host                             : LS46-ws03
+app-id                           : 1CV8C
+locale                           : ru_RU
+started-at                       : 2020-04-24T08:25:52
+last-active-at                   : 2020-04-24T23:12:23
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 8609509
+bytes-last-5min                  : 12568
+calls-all                        : 2863
+calls-last-5min                  : 10
+dbms-bytes-all                   : 19523361
+dbms-bytes-last-5min             : 27744
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 83842
+duration-all-dbms                : 35936
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 189
+duration-last-5min-dbms          : 110
+memory-current                   : 0
+memory-last-5min                 : 252460
+memory-total                     : 198726861
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 24369117
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 18189796
+duration-current-service         : 0
+duration-last-5min-service       : 0
+duration-all-service             : 8105
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 46
+cpu-time-total                   : 29453
+data-separation                  : ''
+
+session                          : 02a4491f-8ce2-4df7-98e3-c0e984b67832
+session-id                       : 4786367
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : ШвецАГ
+host                             : vl20-ws22
+app-id                           : 1CV8C
+locale                           : ru
+started-at                       : 2020-04-23T23:46:08
+last-active-at                   : 2020-04-24T23:12:05
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 8118080
+bytes-last-5min                  : 14920
+calls-all                        : 4647
+calls-last-5min                  : 12
+dbms-bytes-all                   : 69792880
+dbms-bytes-last-5min             : 46161
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 188174
+duration-all-dbms                : 108792
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 268
+duration-last-5min-dbms          : 205
+memory-current                   : 0
+memory-last-5min                 : 547914
+memory-total                     : 531977341
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 83394599
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 78133060
+duration-current-service         : 0
+duration-last-5min-service       : 0
+duration-all-service             : 11716
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 46
+cpu-time-total                   : 62140
+data-separation                  : ''
+
+session                          : 063884da-7a5d-45fd-816e-fafba9940ecf
+session-id                       : 4840132
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : МедведеваВМ
+host                             : vl85-ws11
+app-id                           : 1CV8C
+locale                           : ru_RU
+started-at                       : 2020-04-24T10:00:59
+last-active-at                   : 2020-04-24T23:11:42
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 3855525
+bytes-last-5min                  : 19664
+calls-all                        : 2336
+calls-last-5min                  : 11
+dbms-bytes-all                   : 57406214
+dbms-bytes-last-5min             : 35180
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 79541
+duration-all-dbms                : 35235
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 343
+duration-last-5min-dbms          : 126
+memory-current                   : 0
+memory-last-5min                 : 649408
+memory-total                     : 181581297
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 71253797
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 66483724
+duration-current-service         : 0
+duration-last-5min-service       : 62
+duration-all-service             : 6135
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 156
+cpu-time-total                   : 28687
+data-separation                  : ''
+
+session                          : 0875d811-63c5-4fe1-ab08-c8b1ea759f6f
+session-id                       : 4785857
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : ШипиловНФ
+host                             : at100-ws15
+app-id                           : 1CV8C
+locale                           : ru
+started-at                       : 2020-04-23T23:45:26
+last-active-at                   : 2020-04-24T23:12:26
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 3996585
+bytes-last-5min                  : 12568
+calls-all                        : 3428
+calls-last-5min                  : 10
+dbms-bytes-all                   : 8820522
+dbms-bytes-last-5min             : 27744
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 53609
+duration-all-dbms                : 20917
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 236
+duration-last-5min-dbms          : 110
+memory-current                   : 0
+memory-last-5min                 : 276808
+memory-total                     : 95815635
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 2113007
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 3867506
+duration-current-service         : 0
+duration-last-5min-service       : 31
+duration-all-service             : 6759
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 78
+cpu-time-total                   : 18609
+data-separation                  : ''
+
+session                          : 0b9b3f69-4771-428b-adf1-74993880e3e9
+session-id                       : 4870336
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : СеменовМА
+host                             : VA80-WS01
+app-id                           : 1CV8C
+locale                           : ru_RU
+started-at                       : 2020-04-24T14:06:47
+last-active-at                   : 2020-04-24T23:11:54
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 1848720
+bytes-last-5min                  : 16816
+calls-all                        : 1663
+calls-last-5min                  : 13
+dbms-bytes-all                   : 5436328
+dbms-bytes-last-5min             : 66584
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 28535
+duration-all-dbms                : 11445
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 282
+duration-last-5min-dbms          : 126
+memory-current                   : 0
+memory-last-5min                 : 573772
+memory-total                     : 79299683
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 1421291
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 1616978
+duration-current-service         : 0
+duration-last-5min-service       : 15
+duration-all-service             : 3322
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 109
+cpu-time-total                   : 11171
+data-separation                  : ''
+
+session                          : 0db027b6-fcd4-443b-a321-784fbdab9e47
+session-id                       : 4786464
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : АкинфееваНА
+host                             : hb69-ws10
+app-id                           : 1CV8C
+locale                           : ru
+started-at                       : 2020-04-23T23:46:17
+last-active-at                   : 2020-04-24T23:12:13
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 3850339
+bytes-last-5min                  : 14920
+calls-all                        : 3273
+calls-last-5min                  : 12
+dbms-bytes-all                   : 7882910
+dbms-bytes-last-5min             : 45633
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 44614
+duration-all-dbms                : 18643
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 187
+duration-last-5min-dbms          : 109
+memory-current                   : 0
+memory-last-5min                 : 515787
+memory-total                     : 85747660
+read-current                     : 0
+read-last-5min                   : 8031
+read-total                       : 1542537
+write-current                    : 0
+write-last-5min                  : 25436
+write-total                      : 3827946
+duration-current-service         : 0
+duration-last-5min-service       : 16
+duration-all-service             : 6727
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 46
+cpu-time-total                   : 16234
+data-separation                  : ''
+
+session                          : 0fb6b125-89e5-4f5e-a03a-682216c12eab
+session-id                       : 4786078
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : МерзликинаАВ
+host                             : vl97-ws02
+app-id                           : 1CV8C
+locale                           : ru
+started-at                       : 2020-04-23T23:45:39
+last-active-at                   : 2020-04-24T23:12:14
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 4066436
+bytes-last-5min                  : 14432
+calls-all                        : 3440
+calls-last-5min                  : 11
+dbms-bytes-all                   : 8677984
+dbms-bytes-last-5min             : 21007
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 49950
+duration-all-dbms                : 20855
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 358
+duration-last-5min-dbms          : 248
+memory-current                   : 0
+memory-last-5min                 : 374899
+memory-total                     : 96174811
+read-current                     : 0
+read-last-5min                   : 0
+read-total                       : 2072102
+write-current                    : 0
+write-last-5min                  : 0
+write-total                      : 3679690
+duration-current-service         : 0
+duration-last-5min-service       : 31
+duration-all-service             : 6992
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 46
+cpu-time-total                   : 18406
+data-separation                  : ''
+
+session                          : 102e0460-9dc0-42bb-b30d-ef1f4319bdf4
+session-id                       : 4831650
+infobase                         : d555c926-97db-4d3d-9e15-8aeede54e985
+connection                       : 00000000-0000-0000-0000-000000000000
+process                          : 00000000-0000-0000-0000-000000000000
+user-name                        : ЮрьеваСС
+host                             : HB59-WS09
+app-id                           : 1CV8C
+locale                           : ru_RU
+started-at                       : 2020-04-24T08:49:37
+last-active-at                   : 2020-04-24T23:12:39
+hibernate                        : no
+passive-session-hibernate-time   : 1200
+hibernate-session-terminate-time : 1200
+blocked-by-dbms                  : 0
+blocked-by-ls                    : 0
+bytes-all                        : 3321848
+bytes-last-5min                  : 15248
+calls-all                        : 2406
+calls-last-5min                  : 11
+dbms-bytes-all                   : 9705567
+dbms-bytes-last-5min             : 41892
+db-proc-info                     : 
+db-proc-took                     : 0
+db-proc-took-at                  : 
+duration-all                     : 60096
+duration-all-dbms                : 27459
+duration-current                 : 0
+duration current-dbms            : 0
+duration-last-5min               : 436
+duration-last-5min-dbms          : 298
+memory-current                   : 0
+memory-last-5min                 : 460146
+memory-total                     : 92504465
+read-current                     : 0
+read-last-5min                   : 0
+read-total                       : 2846567
+write-current                    : 0
+write-last-5min                  : 0
+write-total                      : 3623609
+duration-current-service         : 0
+duration-last-5min-service       : 60
+duration-all-service             : 5920
+current-service-name             : 
+cpu-time-current                 : 0
+cpu-time-last-5min               : 93
+cpu-time-total                   : 18718
+data-separation                  : ''
+
