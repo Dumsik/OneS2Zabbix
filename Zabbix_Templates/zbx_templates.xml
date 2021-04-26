@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-04-26T13:10:22Z</date>
+    <groups>
+        <group>
+            <name>Templates/OneS</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>1C</template>
+            <name>1C</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>HASP</name>
+                </application>
+                <application>
+                    <name>Service's</name>
+                </application>
+                <application>
+                    <name>Кластер 1С</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>Сервер администрирования 1С:Предприятия</name>
+                    <key>service.info[&quot;1C:Enterprise 8.3 Remote Server&quot;]</key>
+                    <delay>30s</delay>
+                    <history>7d</history>
+                    <trends>90d</trends>
+                    <applications>
+                        <application>
+                            <name>Service's</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Windows service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Сервер администрирования 1С:Предприятия не запущен</name>
+                            <priority>AVERAGE</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Агент сервера 1С:Предприятия</name>
+                    <key>service.info[&quot;1C:Enterprise 8.3 Server Agent (x86-64)&quot;]</key>
+                    <delay>30s</delay>
+                    <history>7d</history>
+                    <trends>90d</trends>
+                    <applications>
+                        <application>
+                            <name>Service's</name>
+                        </application>
+                    </applications>
+                    <valuemap>
+                        <name>Windows service state</name>
+                    </valuemap>
+                    <triggers>
+                        <trigger>
+                            <expression>{last()}&lt;&gt;0</expression>
+                            <name>Агент сервера 1С:Предприятия не запущен</name>
+                            <priority>HIGH</priority>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Количество дампов процессов сервера 1С</name>
+                    <key>vfs.dir.count[&quot;{$ONES_SERVER_DUMP_PATH}&quot;,&quot;^\D*_8\.3\.[1-9][1-9].[0-9]{4,4}_(?:(?!00000000).)+\.mdmp$&quot;,,file,,0]</key>
+                    <delay>15m</delay>
+                    <history>7d</history>
+                    <description>Количество дампов процессов сервера 1С у которых смещение отлично от 00000000.</description>
+                    <applications>
+                        <application>
+                            <name>Кластер 1С</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{change()}&gt;0</expression>
+                            <recovery_mode>NONE</recovery_mode>
+                            <name>На сервере {HOST.NAME} появился новый дамп процессов сервера 1С</name>
+                            <opdata>Текущее количество дампов в каталоге: {ITEM.LASTVALUE}</opdata>
+                            <priority>INFO</priority>
+                            <description>На сервере  {HOST.NAME} в каталоге {$ONES_SERVER_DUMP_PATH} появился новый dump файл процессов сервера приложений 1С. Необходимо проанализировать ошибку и закрыть триггер вручную.</description>
+                            <manual_close>YES</manual_close>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>Сервер 1С файл настроек техножурнала существует</name>
+                    <key>vfs.file.exists[&quot;{$ONES_SERVER_CONFIG_PATH}\logcfg.xml&quot;]</key>
+                    <delay>1h</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <description>Сервер 1С файл настроек техножурнала logcfg существует.</description>
+                    <applications>
+                        <application>
+                            <name>Кластер 1С</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>Сервер 1С Путь к каталогу дампов</name>
+                    <key>vfs.file.regexp[&quot;{$ONES_SERVER_CONFIG_PATH}\logcfg.xml&quot;,^.+&lt;dump location=&quot;(.+?)\\?&quot; create=&quot;(?:1|true)&quot; .*$,,,,\1]</key>
+                    <delay>1h</delay>
+                    <history>7d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <description>Путь к каталогу дампов сервера 1С указанный в файле logcfg.xml.</description>
+                    <applications>
+                        <application>
+                            <name>Кластер 1С</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$ONES_SERVER_CONFIG_PATH}</macro>
+                    <value>C:\Program Files\1cv8\conf</value>
+                    <description>Путь к каталогу conf сервера 1С</description>
+                </macro>
+                <macro>
+                    <macro>{$ONES_SERVER_DUMP_PATH}</macro>
+                    <value>C:\1C\Dumps</value>
+                    <description>Путь к каталогу дампов rphost</description>
+                </macro>
+            </macros>
+        </template>
+        <template>
+            <template>CommonOneSBaseCheck</template>
+            <name>Общие проверки базы 1С</name>
+            <description>Собраны все общие проверки для базы 1С. Шаблон подключается только к узлу который соответствует базе 1С</description>
+            <groups>
+                <group>
+                    <name>Templates/OneS</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>1С Предприятие</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>{$1C_BASE_NAME}. Проверка публикации веб</name>
+                    <key>zabbix.http.ping[{$1C_WEB_SERVER},{$1C_BASE_NAME},{$1C_ZABBIX_USER},{$1C_ZABBIX_USER_PASSWORD}]</key>
+                    <delay>5m</delay>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <applications>
+                        <application>
+                            <name>1С Предприятие</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{count(#3,OK,ne,0)}=3</expression>
+                            <name>{$1C_BASE_NAME}. Веб сервисы недоступны</name>
+                            <url>https://ones.remi.ru/{$1C_BASE_NAME}/hs/ping</url>
+                            <priority>WARNING</priority>
+                            <description>Недоступны опубликованные веб сервисы для базы {$1C_BASE_NAME}</description>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <name>{$1C_BASE_NAME}. Минимальная дата рассчитанных итогов</name>
+                    <key>zabbix.http.proxy[MINTOTALSPERIOD, none, {$1C_WEB_SERVER},  {$1C_BASE_NAME}, {$1C_ZABBIX_USER}, {$1C_ZABBIX_USER_PASSWORD}]</key>
+                    <delay>12h</delay>
+                    <history>1d</history>
+                    <units>unixtime</units>
+                    <description>Минимальная дата рассчитанных итогов</description>
+                    <applications>
+                        <application>
+                            <name>1С Предприятие</name>
+                        </application>
+                    </applications>
+                    <triggers>
+                        <trigger>
+                            <expression>{now()} - {last()}&gt;=40d</expression>
+                            <name>{$1C_BASE_NAME} итоги регистров  рассчитаны не на актуальный период</name>
+                            <opdata>Минимальная дата рассчитанных итогов: {ITEM.LASTVALUE}</opdata>
+                            <priority>AVERAGE</priority>
+                            <description>В базе {$1C_BASE_NAME} минимальная дата рассчитанных итогов в регистрах накопления или бухгалтерии меньше текущей на 40 дней. Значит итоги на конец предыдущего месяца не рассчитаны.</description>
+                            <dependencies>
+                                <dependency>
+                                    <name>{$1C_BASE_NAME}. Веб сервисы недоступны</name>
+                                    <expression>{CommonOneSBaseCheck:zabbix.http.ping[{$1C_WEB_SERVER},{$1C_BASE_NAME},{$1C_ZABBIX_USER},{$1C_ZABBIX_USER_PASSWORD}].count(#3,OK,ne,0)}=3</expression>
+                                </dependency>
+                            </dependencies>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <macros>
+                <macro>
+                    <macro>{$1C_BASE_NAME}</macro>
+                    <description>Имя базы 1С в кластере серверов</description>
+                </macro>
+                <macro>
+                    <macro>{$1C_WEB_SERVER}</macro>
+                    <description>Веб сервер на котором опубликована база 1С</description>
+                </macro>
+            </macros>
+        </template>
+        <template>
+            <template>OneScluster</template>
+            <name>Мониторинг кластера 1С</name>
+            <groups>
+                <group>
+                    <name>Templates/OneS</name>
+                </group>
+            </groups>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>1C clusters discovery</name>
+                    <key>1c.clusters.discovery[{$RAS_PORT}]</key>
+                    <delay>30s</delay>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Потребляемая память всего [{#CLUSTERNAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.clusters.processesmemory[{$RAS_PORT},{#CLUSTERID},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MEMORY</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.clusters.processes[{$RAS_PORT},{#CLUSTERID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Кластер [{#CLUSTERNAME}]</name>
+                            <key>1c.clusters.processes[{$RAS_PORT},{#CLUSTERID},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>30s</delay>
+                            <history>0</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\Прочее</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы [{#CLUSTERNAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.clusters.sessionstotal[{$RAS_PORT},{#CLUSTERID},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.clusters.sessions[{$RAS_PORT},{#CLUSTERID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Источник сеансовых данных кластера [{#CLUSTERNAME}]</name>
+                            <key>1c.clusters.sessions[{$RAS_PORT},{#CLUSTERID},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>30s</delay>
+                            <history>0</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\Прочее</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>1C infobases discovery</name>
+                    <key>1c.infobases.discovery[{$RAS_PORT},{$RAC_USR},{$RAC_PWD}]</key>
+                    <delay>30s</delay>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Блокировки СУБД [{#INFOBASENAME}] \ [{#CLUSTERNAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.lockbydbms[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Статистика</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.LOCK_BY_DBMS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Блокировки управляемые [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.lockbyls[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Статистика</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.LOCK_BY_LS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Время вызова СУБД (текущее) [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.maxdurationdbms[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <units>s</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Статистика</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MAX_DURATION_DBMS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Время вызова (текущее) максимальное [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.maxduration[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <units>s</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Статистика</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MAX_DURATION</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы фоновых заданий [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.backgroundjob[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_BACKGROUND_JOB</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы COM соединений [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.comconnection[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_COM_CONNECTION</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы COM консоль [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.comconsole[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_COM_CONSOLE</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Память (текущая) максимальная пользователь/сеанс [{#INFOBASENAME}] на [{#CLUSTERNAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.maxmemorybysession[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Статистика</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MAX_MEMORY_TOTAL_BY_SESSIONS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Память (текущая) суммарная [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.memorytotalsum[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>B</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Статистика</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MEMORY_TOTAL_SUM</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы прочие [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.other[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_OTHER</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы толстых клиентов [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.thickclient[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_THICK_CLIENT</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы тонких клиентов [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.thinclient[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_THIN_CLIENT</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы WEB-клиентов [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.webclients[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_WEB_CLIENT</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы WEB-служб [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions.webservice[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS_WEB_SERVICE</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Сеансы все [{#CLUSTERNAME}] \ [{#INFOBASENAME}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.infobase.sessions[{#CLUSTERID},{#INFOBASEID}]</key>
+                            <delay>0</delay>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\[{#INFOBASENAME}]\Сеансы</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>База данных [{#INFOBASENAME}] на кластере [{#CLUSTERNAME}]</name>
+                            <key>1c.infobases.info[{$RAS_PORT},{#CLUSTERID},{#INFOBASEID},{$RAC_USR},{$RAC_PWD}]</key>
+                            <history>0</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\Прочее</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>1C servers discovery</name>
+                    <key>1c.servers.discovery[{$RAS_PORT},{$RAC_USR},{$RAC_PWD}]</key>
+                    <delay>30s</delay>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Метрика &quot;Затрачено менеджером блокировки&quot; на [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.servers.avg_lock_call_time[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>0</delay>
+                            <value_type>FLOAT</value_type>
+                            <description>Элемент хранит максимальное значение параметра AVG-LOCK-CALL-TIME всех процессов, запущенных на сервере кластера</description>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\srv\[{#AGENTHOST}]</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.AVG_LOCK_CALL_TIME</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.servers.processes[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{max(3m)}&gt;=1.0</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{max(2m)}&lt;0.7</recovery_expression>
+                                    <name>Значение метрики &quot;Затрачено менеджером блокировки&quot; превысило 1.0 сек [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                                    <opdata>{ITEM.LASTVALUE}</opdata>
+                                    <status>DISABLED</status>
+                                    <priority>WARNING</priority>
+                                    <description>Проверка значения метрики &quot;Затрачено менеджером блокировки&quot; (avg-lock-call-time)</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Рабочий сервер [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                            <key>1c.servers.processes[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>30s</delay>
+                            <history>0</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\Прочее</name>
+                                </application_prototype>
+                            </application_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Потребляемая память max [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.servers.processmemorymax[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\srv\[{#AGENTHOST}]</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MAX_MEMORY</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.servers.processes[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&gt;30G</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}&lt;27G</recovery_expression>
+                                    <name>Потребление памяти рабочим процессом превысило 30GB [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                                    <opdata>{ITEM.LASTVALUE}</opdata>
+                                    <status>DISABLED</status>
+                                    <priority>WARNING</priority>
+                                    <description>Проверка потребления памяти рабочим процессом</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Потребители памяти max [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.servers.processmemoryusersmax[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>0</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\srv\[{#AGENTHOST}]</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.SESSIONS</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.servers.processes[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>Потребляемая память всего [{#CLUSTERNAME}] \ [{#AGENTHOST}]</name>
+                            <type>DEPENDENT</type>
+                            <key>1c.servers.processmemory[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            <delay>0</delay>
+                            <units>B</units>
+                            <application_prototypes>
+                                <application_prototype>
+                                    <name>Кластеры 1C\[{#CLUSTERNAME}]\srv\[{#AGENTHOST}]</name>
+                                </application_prototype>
+                            </application_prototypes>
+                            <preprocessing>
+                                <step>
+                                    <type>JSONPATH</type>
+                                    <params>$.MEMORY</params>
+                                </step>
+                            </preprocessing>
+                            <master_item>
+                                <key>1c.servers.processes[{$RAS_PORT},{#CLUSTERID},{#AGENTHOST},{$RAC_USR},{$RAC_PWD}]</key>
+                            </master_item>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <macros>
+                <macro>
+                    <macro>{$RAS_PORT}</macro>
+                    <value>1545</value>
+                </macro>
+            </macros>
+        </template>
+        <template>
+            <template>OneSConvExchange</template>
+            <name>Мониторинг обмена данными 1С через конвертацию данных</name>
+            <groups>
+                <group>
+                    <name>Templates/OneS</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>1С Предприятие</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>1C convertation auto exchange discovery</name>
+                    <type>TRAP</type>
+                    <key>1c.convertation.autoexchange.discovery</key>
+                    <delay>0</delay>
+                    <lifetime>7d</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>Обмен КД: [{#IB}\{#NODENAME}\{#DIRECTION}]</name>
+                            <type>TRAP</type>
+                            <key>1c.convertation.autoexchange[{#IB},{#NODEID},{#DIRECTION}]</key>
+                            <delay>0</delay>
+                            <history>7d</history>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <description>Автоматический обмен данными через конвертацию 2/3</description>
+                            <applications>
+                                <application>
+                                    <name>1С Предприятие</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>({count(#4,FAIL,eq)}=4)&#13;
+or&#13;
+({nodata(4h)}=1 and&#13;
+{time()}&gt;083000 and {time()}&lt;220000)</expression>
+                                    <name>Ошибка обмена КД: [{#IB}\{#NODENAME}\{#DIRECTION}]</name>
+                                    <priority>AVERAGE</priority>
+                                    <description>Обмен данным через конвертацию с узлом {#NODENAME} в базе {#IB} завершился с ошибкой или не выполняется более 4 часов</description>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{a_1C:vfs.file.regexp[&quot;{$ONES_SERVER_CONFIG_PATH}\logcfg.xml&quot;,^.+&lt;dump location=&quot;(.+?)\\?&quot; create=&quot;(?:1|true)&quot; .*$,,,,\1].last()}&lt;&gt;{$ONES_SERVER_DUMP_PATH} or {a_1C:vfs.file.exists[&quot;{$ONES_SERVER_CONFIG_PATH}\logcfg.xml&quot;].last()}=0</expression>
+            <name>На сервере  {HOST.NAME}  каталог дампов сервера 1С настроен не верно</name>
+            <opdata>Текущий путь в файле logcfg.xml: {ITEM.LASTVALUE}</opdata>
+            <priority>INFO</priority>
+            <description>На сервере  {HOST.NAME}  для сервера 1С  в файле настроек техножурнала  {$ONES_SERVER_CONFIG_PATH}\logcfg.xml, указан не корректный путь к каталогу сохранения дампов или файл настроек техножурнала не существует. Либо сохранение дампов не настроено. Необходимо настроить сохранение дампов согласно инструкции по указанному пути.</description>
+        </trigger>
+    </triggers>
+    <value_maps>
+        <value_map>
+            <name>Windows service state</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Запущена</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Преостановленна</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>В ожидании запуска</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>В ожидании приостановки</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>В ожидании продолжения</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>В ожидании остановки</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>Остановленна</newvalue>
+                </mapping>
+                <mapping>
+                    <value>7</value>
+                    <newvalue>Неизвестно</newvalue>
+                </mapping>
+                <mapping>
+                    <value>255</value>
+                    <newvalue>Сервис не найден</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
